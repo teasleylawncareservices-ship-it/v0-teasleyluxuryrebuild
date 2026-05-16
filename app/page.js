@@ -177,7 +177,6 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <span>⌄</span>
                 </div>
               </div>
               </ScrollReveal>

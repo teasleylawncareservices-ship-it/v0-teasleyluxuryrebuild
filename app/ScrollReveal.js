@@ -19,7 +19,7 @@ export default function ScrollReveal({ children, delay = 0, className = '' }) {
           observer.unobserve(el)
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
     )
 
     observer.observe(el)
@@ -34,8 +34,8 @@ export default function ScrollReveal({ children, delay = 0, className = '' }) {
         mounted
           ? {
               opacity: visible ? 1 : 0,
-              transform: visible ? 'translateY(0)' : 'translateY(32px)',
-              transition: `opacity 0.75s ease, transform 0.75s ease`,
+              transform: visible ? 'translateY(0)' : 'translateY(24px)',
+              transition: `opacity 0.65s ease, transform 0.65s ease`,
             }
           : {}
       }
