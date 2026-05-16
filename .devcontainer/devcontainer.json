@@ -1,0 +1,20 @@
+{
+  "name": "Teasley Luxury Rebuild",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postStartCommand": "npm install && npm run dev",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

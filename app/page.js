@@ -1,4 +1,9 @@
 
+import ServiceCard from './ServiceCard'
+import HeroSection from './HeroSection'
+import ScrollReveal from './ScrollReveal'
+import StickyHeader from './StickyHeader'
+
 const services = [
   {
     title: 'Weekly Lawn Maintenance',
@@ -21,7 +26,7 @@ const services = [
     description: 'Planting and installation services for flowers, shrubs, and ornamental plants to enhance curb appeal and support healthy landscapes.'
   },
   {
-    title: 'Maintenance Pruning',
+    title: 'Pruning',
     image: 'https://images.pexels.com/photos/36713694/pexels-photo-36713694.jpeg?auto=compress&cs=tinysrgb&w=1600',
     description: 'Selective pruning for shrubs and small trees to improve health, shape growth, and keep your property neat.'
   }
@@ -34,126 +39,71 @@ const cities = [
 
 export default function Home() {
   return (
-    <main className="bg-[#f5f3ef] text-[#112018]">
+    <main className="bg-[#f5f3ef] text-[#112018] overflow-x-hidden">
 
-      <header className="fixed top-0 left-0 w-full bg-[#f5f3ef]/95 backdrop-blur-md border-b border-[#d8ddd6] z-50">
-        <div className="max-w-7xl mx-auto px-10 py-5 flex items-center justify-between">
-          <div className="font-serif text-4xl">
-            TEASLEY <span className="text-sm tracking-[0.4em] font-sans text-[#496256]">LAWN CARE</span>
-          </div>
+      <StickyHeader />
 
-          <nav className="hidden md:flex gap-14 uppercase tracking-[0.2em] text-sm">
-            <a href="#services">Services</a>
-            <a href="#estimate">Estimate</a>
-            <a href="#areas">Service Areas</a>
-          </nav>
+      <HeroSection />
 
-          <a href="tel:9197466062" className="bg-[#315645] text-white rounded-full px-8 py-4">
-            ☏ 919-746-6062
-          </a>
-        </div>
-      </header>
+      <section id="services" className="py-16 md:py-32">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
 
-      <section className="relative h-screen overflow-hidden">
-        <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-k6y5Mhf32YUe2iTYCtRHeoUkkHYGTI.png"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        <div className="absolute inset-0 bg-black/45"></div>
-
-        <div className="relative z-10 h-full flex items-center">
-          <div className="max-w-7xl mx-auto px-10 text-white w-full pt-24">
-            <p className="uppercase tracking-[0.5em] text-sm mb-10">
-              PROFESSIONAL LAWN CARE · RALEIGH, NC
+          <ScrollReveal>
+            <p className="uppercase tracking-[0.5em] text-[#50685a] text-sm mb-6">
+              OUR SERVICES
             </p>
 
-            <h1 className="font-serif text-[120px] leading-[0.9] max-w-5xl mb-10">
-              Give Your Lawn
+            <h2 className="font-serif text-5xl sm:text-7xl md:text-[90px] leading-[0.9] mb-10 md:mb-20">
+              Maintenance
               <br />
-              Some TLC
-            </h1>
+              <em>Mastery</em>
+            </h2>
 
-            <p className="text-2xl max-w-3xl text-[#e5dfd5] leading-relaxed mb-12">
-              Professional lawn maintenance and landscaping services for residential properties.
-            </p>
-
-            <div className="flex gap-6 flex-wrap">
-              <a href="#estimate" className="bg-[#315645] px-10 py-6 rounded-full uppercase tracking-[0.2em] text-sm">
-                Request Free Estimate
-              </a>
-
-              <a href="tel:9197466062" className="border border-white/30 px-10 py-6 rounded-full uppercase tracking-[0.2em] text-sm">
-                Call 919-746-6062
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services" className="py-32">
-        <div className="max-w-7xl mx-auto px-10">
-
-          <p className="uppercase tracking-[0.5em] text-[#50685a] text-sm mb-6">
-            OUR SERVICES
-          </p>
-
-          <h2 className="font-serif text-[90px] leading-[0.9] mb-20">
-            Maintenance
-            <br />
-            <em>Mastery</em>
-          </h2>
-
-          <div className="w-16 h-[1px] bg-[#50685a] mb-24"></div>
+            <div className="w-16 h-[1px] bg-[#50685a] mb-12 md:mb-24"></div>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.title}>
-                <div className="overflow-hidden mb-6">
-                  <img src={service.image} className="w-full h-[360px] object-cover hover:scale-105 transition duration-700" />
-                </div>
-
-                <h3 className="font-serif text-4xl mb-4">{service.title}</h3>
-
-                <p className="text-[#4e6055] text-lg leading-relaxed mb-5">{service.description}</p>
-
-                <a href="#estimate" className="text-[#50685a] text-lg">
-                  Learn more →
-                </a>
-              </div>
+            {services.map((service, i) => (
+              <ScrollReveal key={service.title} delay={i * 120}>
+                <ServiceCard service={service} />
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="estimate" className="bg-[#021c16] text-white py-32">
-        <div className="max-w-3xl mx-auto px-10">
+      <section id="estimate" className="bg-[#021c16] text-white py-16 md:py-32">
+        <div className="max-w-3xl mx-auto px-5 md:px-10">
 
-          <p className="uppercase tracking-[0.5em] text-sm text-[#83998e] mb-6">
-            FREE ESTIMATES
-          </p>
+          <ScrollReveal>
+            <p className="uppercase tracking-[0.5em] text-sm text-[#83998e] mb-6">
+              FREE ESTIMATES
+            </p>
 
-          <h2 className="font-serif text-[80px] leading-[0.9] mb-10">
-            Request Your
-            <br />
-            <em>Estimate</em>
-          </h2>
+            <h2 className="font-serif text-5xl sm:text-7xl md:text-[80px] leading-[0.9] mb-8 md:mb-10">
+              Request Your
+              <br />
+              <em>Estimate</em>
+            </h2>
 
-          <div className="w-16 h-[1px] bg-[#83998e] mb-16"></div>
+            <div className="w-16 h-[1px] bg-[#83998e] mb-10 md:mb-16"></div>
+          </ScrollReveal>
 
-          <div className="flex items-center gap-6 text-[#809086] mb-16">
+          <div className="flex flex-wrap items-center gap-3 md:gap-6 text-[#809086] mb-10 md:mb-16">
             <div className="border border-white rounded-full w-10 h-10 flex items-center justify-center">1</div>
             <span>Service</span>
-            <div className="w-10 h-[1px] bg-[#32423a]"></div>
+            <div className="w-6 md:w-10 h-[1px] bg-[#32423a]"></div>
             <div className="border border-[#32423a] rounded-full w-10 h-10 flex items-center justify-center">2</div>
             <span>Property</span>
-            <div className="w-10 h-[1px] bg-[#32423a]"></div>
+            <div className="w-6 md:w-10 h-[1px] bg-[#32423a]"></div>
             <div className="border border-[#32423a] rounded-full w-10 h-10 flex items-center justify-center">3</div>
             <span>Contact</span>
           </div>
 
           <form action="https://formsubmit.co/teasleylawncareservices@gmail.com" method="POST">
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New Estimate Request — Teasley Lawn Care" />
+            <input type="hidden" name="_template" value="table" />
 
             <p className="text-2xl mb-10">Which services are you interested in?</p>
 
@@ -194,31 +144,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="areas" className="py-32">
-        <div className="max-w-6xl mx-auto px-10">
+      <section id="areas" className="py-16 md:py-32">
+        <div className="max-w-6xl mx-auto px-5 md:px-10">
 
-          <p className="uppercase tracking-[0.5em] text-[#50685a] text-sm mb-6">
-            WHERE WE SERVE
-          </p>
+          <ScrollReveal>
+            <p className="uppercase tracking-[0.5em] text-[#50685a] text-sm mb-6">
+              WHERE WE SERVE
+            </p>
 
-          <h2 className="font-serif text-[90px] leading-[0.9] mb-10">
-            Our <em>Region</em>
-          </h2>
+            <h2 className="font-serif text-5xl sm:text-7xl md:text-[90px] leading-[0.9] mb-8 md:mb-10">
+              Our <em>Region</em>
+            </h2>
 
-          <div className="w-16 h-[1px] bg-[#50685a] mb-12"></div>
+            <div className="w-16 h-[1px] bg-[#50685a] mb-8 md:mb-12"></div>
 
-          <p className="text-2xl text-[#4e6055] max-w-4xl leading-relaxed mb-20">
+            <p className="text-lg md:text-2xl text-[#4e6055] max-w-4xl leading-relaxed mb-10 md:mb-20">
             Click any city below to see the specific neighborhoods and communities we serve.
-            Not sure if you're in our area? Give us a call — we're happy to confirm.
-          </p>
+              Not sure if you're in our area? Give us a call — we're happy to confirm.
+            </p>
+          </ScrollReveal>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {cities.map((city) => (
-              <div key={city} className="border border-[#d7dcd5] bg-white px-8 py-8">
+            {cities.map((city, i) => (
+              <ScrollReveal key={city} delay={i * 60}>
+              <div className="border border-[#d7dcd5] bg-white px-8 py-8 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-default">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <span>⌖</span>
-                    <span className="font-serif text-4xl">{city}</span>
+                    <span className="font-serif text-2xl md:text-4xl">{city}</span>
                     <span className="uppercase tracking-[0.3em] text-sm text-[#50685a]">
                       NC
                     </span>
@@ -227,15 +180,61 @@ export default function Home() {
                   <span>⌄</span>
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="border border-dashed border-[#d7dcd5] p-8 mt-16 text-lg text-[#4e6055]">
+          <div className="border border-dashed border-[#d7dcd5] p-5 md:p-8 mt-10 md:mt-16 text-base md:text-lg text-[#4e6055]">
             <strong className="text-[#102018]">Don't see your neighborhood?</strong> We also serve many surrounding communities throughout Wake, Nash, and Johnston counties.
           </div>
 
         </div>
       </section>
+
+      <footer className="bg-[#021c16] text-white py-14 md:py-20">
+        <div className="max-w-7xl mx-auto px-5 md:px-10">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+
+            <div>
+              <p className="font-serif text-3xl md:text-4xl italic mb-2">TLC</p>
+              <p className="uppercase tracking-[0.4em] text-xs text-[#83998e]">Teasley Lawn Care Services</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-8 md:gap-16 text-[#c4cfc9]">
+              <div>
+                <p className="uppercase tracking-[0.35em] text-xs text-[#83998e] mb-3">Phone</p>
+                <a
+                  href="tel:9197466062"
+                  className="text-lg hover:text-white transition-colors duration-200"
+                >
+                  919-746-6062
+                </a>
+              </div>
+
+              <div>
+                <p className="uppercase tracking-[0.35em] text-xs text-[#83998e] mb-3">Email</p>
+                <a
+                  href="mailto:teasleylawncareservices@gmail.com"
+                  className="text-lg hover:text-white transition-colors duration-200 break-all"
+                >
+                  teasleylawncareservices@gmail.com
+                </a>
+              </div>
+
+              <div>
+                <p className="uppercase tracking-[0.35em] text-xs text-[#83998e] mb-3">Service Area</p>
+                <p className="text-lg">Raleigh, NC &amp; Surrounding</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="border-t border-[#1a3a2e] mt-12 pt-8 text-[#4e6055] text-sm flex flex-col sm:flex-row sm:justify-between gap-2">
+            <p>&copy; {new Date().getFullYear()} Teasley Lawn Care Services. All rights reserved.</p>
+            <p>Raleigh · Cary · Wake Forest &amp; beyond</p>
+          </div>
+        </div>
+      </footer>
 
     </main>
   )

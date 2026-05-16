@@ -6,6 +6,11 @@ export const metadata = {
   description: 'Luxury lawn care and landscaping in Raleigh, NC'
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
