@@ -52,9 +52,10 @@ export default function StickyHeader() {
             <p className="font-serif text-lg leading-tight normal-case tracking-normal">Teasley Lawn Care</p>
             <p className="uppercase text-[10px] tracking-[0.3em] opacity-70">Services</p>
           </div>
-          <a href="#services" className="hover:opacity-70 transition-opacity">Services</a>
-          <a href="#estimate" className="hover:opacity-70 transition-opacity">Estimate</a>
-          <a href="#areas" className="hover:opacity-70 transition-opacity">Service Areas</a>
+          <a href="/#services" className="hover:opacity-70 transition-opacity">Services</a>
+          <a href="/#estimate" className="hover:opacity-70 transition-opacity">Estimate</a>
+          <a href="/#areas" className="hover:opacity-70 transition-opacity">Service Areas</a>
+          <a href="/reviews" className="hover:opacity-70 transition-opacity">Reviews</a>
         </nav>
 
         {/* Desktop call button */}
@@ -88,9 +89,10 @@ export default function StickyHeader() {
         style={{ maxHeight: menuOpen ? '300px' : '0' }}
       >
         <nav className="flex flex-col px-6 pb-6 pt-2 gap-5 uppercase tracking-[0.2em] text-sm text-[#112018]">
-          <a href="#services" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Services</a>
-          <a href="#estimate" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Estimate</a>
-          <a href="#areas" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Service Areas</a>
+          <a href="/#services" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Services</a>
+          <a href="/#estimate" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Estimate</a>
+          <a href="/#areas" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Service Areas</a>
+          <a href="/reviews" onClick={() => setMenuOpen(false)} className="hover:opacity-70 transition-opacity">Reviews</a>
           <a href="tel:9197466062" onClick={() => setMenuOpen(false)} className="bg-[#315645] text-white rounded-full px-6 py-3 text-center">
             ☏ 919-746-6062
           </a>
