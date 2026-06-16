@@ -1,5 +1,5 @@
 import ResultsCard from '../ResultsCard'
-import ReviewCard from '../ReviewCard'
+import ReviewForm from '../ReviewForm'
 import ScrollReveal from '../ScrollReveal'
 
 // Sample before/after projects
@@ -51,52 +51,6 @@ const projects = [
     description: 'Combining mulching, pruning, and planting services resulted in a completely rejuvenated outdoor space. The property now showcases professional landscaping.',
     beforeImage: 'https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg?auto=compress&cs=tinysrgb&w=1600',
     afterImage: 'https://images.pexels.com/photos/3807516/pexels-photo-3807516.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  }
-]
-
-// Sample customer reviews
-const reviews = [
-  {
-    id: 1,
-    text: 'Teasley Lawn Care transformed our backyard into something we never thought was possible. The team is professional, on-time, and genuinely cares about their work. Highly recommend!',
-    author: 'Sarah Mitchell',
-    location: 'Raleigh, NC',
-    rating: 5
-  },
-  {
-    id: 2,
-    text: 'We switched to Teasley after years of mediocre service. The difference in our lawn health is incredible. They actually listen to what you want and deliver results.',
-    author: 'James Chen',
-    location: 'Cary, NC',
-    rating: 5
-  },
-  {
-    id: 3,
-    text: 'Best investment we\'ve made for our home! The weekly maintenance keeps our property looking show-ready. Worth every penny and then some.',
-    author: 'Maria Rodriguez',
-    location: 'Wake Forest, NC',
-    rating: 5
-  },
-  {
-    id: 4,
-    text: 'Finally found a landscaping company that understands quality. Their attention to detail is unmatched. Our neighbors keep asking who maintains our yard!',
-    author: 'David Thompson',
-    location: 'Knightdale, NC',
-    rating: 5
-  },
-  {
-    id: 5,
-    text: 'The pruning and mulching services completely revitalized our front beds. The team was efficient, clean, and the results speak for themselves.',
-    author: 'Patricia Johnson',
-    location: 'Raleigh, NC',
-    rating: 5
-  },
-  {
-    id: 6,
-    text: 'Exceptional service from start to finish. They gave us a free estimate, communicated clearly, and executed the work flawlessly. Couldn\'t be happier!',
-    author: 'Michael Garcia',
-    location: 'Cary, NC',
-    rating: 5
   }
 ]
 
@@ -157,28 +111,28 @@ export default function Results() {
 
       {/* Reviews Section */}
       <section className="bg-[#f0ede8] py-16 md:py-32">
-        <div className="max-w-7xl mx-auto px-5 md:px-10">
+        <div className="max-w-4xl mx-auto px-5 md:px-10">
           <ScrollReveal>
             <div className="mb-12 md:mb-20">
               <p className="uppercase tracking-[0.5em] text-[#50685a] text-sm mb-6">
-                CLIENT TESTIMONIALS
+                SHARE YOUR EXPERIENCE
               </p>
               
               <h2 className="font-serif text-4xl sm:text-6xl md:text-[80px] leading-[0.9] mb-8">
-                What Our
+                Leave a
                 <br />
-                <em>Clients Say</em>
+                <em>Review</em>
               </h2>
 
-              <div className="w-16 h-[1px] bg-[#50685a]"></div>
+              <div className="w-16 h-[1px] bg-[#50685a] mb-8"></div>
+
+              <p className="text-lg md:text-xl text-[#4e6055] leading-relaxed">
+                Have you experienced the Teasley Lawn Care difference? Share your feedback and help other homeowners discover our services.
+              </p>
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {reviews.map((review, i) => (
-              <ReviewCard key={review.id} review={review} />
-            ))}
-          </div>
+          <ReviewForm />
         </div>
       </section>
 
