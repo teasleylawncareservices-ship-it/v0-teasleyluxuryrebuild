@@ -1,60 +1,76 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import ResultsCard from '../ResultsCard'
 import ReviewForm from '../ReviewForm'
 import ScrollReveal from '../ScrollReveal'
 
-// Sample before/after projects
-const projects = [
-  {
-    id: 1,
-    title: 'Overgrown Yard Transformation',
-    service: 'Weekly Maintenance',
-    description: 'This residential property was transformed from an overgrown landscape to a lush, manicured lawn. Regular weekly maintenance restored the lawn health and kept edges crisp and clean.',
-    beforeImage: 'https://images.pexels.com/photos/1092664/pexels-photo-1092664.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/2440111/pexels-photo-2440111.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  },
-  {
-    id: 2,
-    title: 'Garden Bed Restoration',
-    service: 'Mulching & Planting',
-    description: 'Fresh mulch installation and seasonal plantings brought new life to this front yard. The vibrant colors and healthy plantings created immediate curb appeal.',
-    beforeImage: 'https://images.pexels.com/photos/33013000/pexels-photo-33013000.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/2402517/pexels-photo-2402517.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  },
-  {
-    id: 3,
-    title: 'Shrub Pruning & Cleanup',
-    service: 'Pruning',
-    description: 'Selective pruning of overgrown shrubs enhanced the landscape structure and improved overall property aesthetics. A complete cleanup left the yard looking pristine.',
-    beforeImage: 'https://images.pexels.com/photos/2516216/pexels-photo-2516216.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  },
-  {
-    id: 4,
-    title: 'Landscape Design Install',
-    service: 'Planting & Design',
-    description: 'A complete landscape redesign with new plantings and mulched beds created a cohesive, modern look. The property now has year-round visual interest.',
-    beforeImage: 'https://images.pexels.com/photos/2502517/pexels-photo-2502517.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/3714896/pexels-photo-3714896.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  },
-  {
-    id: 5,
-    title: 'Bi-Weekly Maintenance Results',
-    service: 'Bi-Weekly Maintenance',
-    description: 'After six months of consistent bi-weekly care, this lawn went from patchy and thin to thick and vibrant. Proper feeding and regular mowing transformed the property.',
-    beforeImage: 'https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  },
-  {
-    id: 6,
-    title: 'Complete Yard Refresh',
-    service: 'Full Service',
-    description: 'Combining mulching, pruning, and planting services resulted in a completely rejuvenated outdoor space. The property now showcases professional landscaping.',
-    beforeImage: 'https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    afterImage: 'https://images.pexels.com/photos/3807516/pexels-photo-3807516.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  }
-]
-
 export default function Results() {
+  const [projects, setProjects] = useState([])
+
+  // Load projects from localStorage
+  useEffect(() => {
+    const savedProjects = localStorage.getItem('teasleyProjects')
+    if (savedProjects) {
+      setProjects(JSON.parse(savedProjects))
+    }
+  }, [])
+
+  // Sample before/after projects (fallback)
+  const defaultProjects = [
+    {
+      id: 1,
+      title: 'Overgrown Yard Transformation',
+      service: 'Weekly Maintenance',
+      description: 'This residential property was transformed from an overgrown landscape to a lush, manicured lawn. Regular weekly maintenance restored the lawn health and kept edges crisp and clean.',
+      beforeImage: 'https://images.pexels.com/photos/1092664/pexels-photo-1092664.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/2440111/pexels-photo-2440111.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+      id: 2,
+      title: 'Garden Bed Restoration',
+      service: 'Mulching & Planting',
+      description: 'Fresh mulch installation and seasonal plantings brought new life to this front yard. The vibrant colors and healthy plantings created immediate curb appeal.',
+      beforeImage: 'https://images.pexels.com/photos/33013000/pexels-photo-33013000.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/2402517/pexels-photo-2402517.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+      id: 3,
+      title: 'Shrub Pruning & Cleanup',
+      service: 'Pruning',
+      description: 'Selective pruning of overgrown shrubs enhanced the landscape structure and improved overall property aesthetics. A complete cleanup left the yard looking pristine.',
+      beforeImage: 'https://images.pexels.com/photos/2516216/pexels-photo-2516216.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+      id: 4,
+      title: 'Landscape Design Install',
+      service: 'Planting & Design',
+      description: 'A complete landscape redesign with new plantings and mulched beds created a cohesive, modern look. The property now has year-round visual interest.',
+      beforeImage: 'https://images.pexels.com/photos/2502517/pexels-photo-2502517.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/3714896/pexels-photo-3714896.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+      id: 5,
+      title: 'Bi-Weekly Maintenance Results',
+      service: 'Bi-Weekly Maintenance',
+      description: 'After six months of consistent bi-weekly care, this lawn went from patchy and thin to thick and vibrant. Proper feeding and regular mowing transformed the property.',
+      beforeImage: 'https://images.pexels.com/photos/1108701/pexels-photo-1108701.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+      id: 6,
+      title: 'Complete Yard Refresh',
+      service: 'Full Service',
+      description: 'Combining mulching, pruning, and planting services resulted in a completely rejuvenated outdoor space. The property now showcases professional landscaping.',
+      beforeImage: 'https://images.pexels.com/photos/2113566/pexels-photo-2113566.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      afterImage: 'https://images.pexels.com/photos/3807516/pexels-photo-3807516.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    }
+  ]
+
+  // Use uploaded projects if available, otherwise use defaults
+  const displayProjects = projects.length > 0 ? projects : defaultProjects
+
   return (
     <main className="bg-[#f5f3ef] text-[#112018] overflow-x-hidden">
       {/* Header Section */}
@@ -76,6 +92,16 @@ export default function Results() {
             <p className="text-lg md:text-2xl text-[#c4cfc9] max-w-3xl leading-relaxed">
               See the transformative results we've achieved for homeowners across Raleigh and the surrounding areas. Each project showcases our commitment to excellence and attention to detail.
             </p>
+
+            {/* Admin Link */}
+            <div className="mt-8">
+              <a
+                href="/admin/projects"
+                className="text-[#83998e] hover:text-white transition-colors text-sm uppercase tracking-[0.2em]"
+              >
+                ↳ Manage Projects
+              </a>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -99,13 +125,19 @@ export default function Results() {
             </div>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 80}>
-                <ResultsCard result={project} />
-              </ScrollReveal>
-            ))}
-          </div>
+          {displayProjects.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-[#4e6055] text-lg">No projects yet. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-8">
+              {displayProjects.map((project, i) => (
+                <ScrollReveal key={project.id} delay={i * 80}>
+                  <ResultsCard result={project} />
+                </ScrollReveal>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
